@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>पर्सनल प्रोफाइल वेबसाइट</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 300px;
+    }
+    input, select {
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>अपनी प्रोफाइल देखें</h2>
+  <form id="profileForm">
+    <input type="text" id="rollNumber" placeholder="रोल नंबर" required />
+    
+    <select id="semester" required>
+      <option value="">सेमेस्टर चुनें</option>
+      <option value="1">1st Semester</option>
+      <option value="2">2nd Semester</option>
+      <option value="3">3rd Semester</option>
+      <option value="4">4th Semester</option>
+      <option value="5">5th Semester</option>
+      <option value="6">6th Semester</option>
+    </select>
+
+    <input type="date" id="dob" required />
+
+    <button type="submit">तस्वीर दिखाएँ</button>
+  </form>
+
+  <div id="profileImage"></div>
+</div>
+
+<script>
+  document.getElementById('profileForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var roll = document.getElementById('rollNumber').value.trim();
+    var sem = document.getElementById('semester').value;
+    var dob = document.getElementById('dob').value;
+
+    // आपकी जानकारी
+    const validRoll = '2415145640023';
+    const validDOB = '2005-03-30'; // HTML date format is YYYY-MM-DD
+
+    let imageDiv = document.getElementById('profileImage');
+
+    if (roll === validRoll && dob === validDOB) {
+      let imagePath = 'https://drive.google.com/uc?export=view&id=171bgArn7BVzNZSOWng3JLab7NwU7btWh';
+      imageDiv.innerHTML = `
+        <p><strong>सेमेस्टर:</strong> ${sem}</p>
+        <img src="${imagePath}" alt="Profile Photo">
+      `;
+    } else {
+      imageDiv.innerHTML = `<p style="color:red;">जानकारी गलत है या प्रोफाइल नहीं मिली।</p>`;
+    }
+  });
+</script>
+
+</body>
+</html>
