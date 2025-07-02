@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #eef2f3;
+    }
+    .container {
+      max-width: 450px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
+    }
+    input, select, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result-image {
+      display: none;
+      margin-top: 20px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 style="text-align:center;">Check Your Result</h2>
+
+    <label for="roll">Roll Number:</label>
+    <input type="text" id="roll" placeholder="Enter Roll Number" required>
+
+    <label for="sem">Semester:</label>
+    <select id="sem">
+      <option value="">Select Semester</option>
+      <option value="3">Semester III</option>
+    </select>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required>
+
+    <button onclick="showResult()">Submit</button>
+
+    <!-- Result Image will be shown here -->
+    <img id="result-image" src="result.jpg" alt="Result Image">
+  </div>
+
+  <script>
+    function showResult() {
+      const roll = document.getElementById("roll").value.trim();
+      const sem = document.getElementById("sem").value;
+      const dob = document.getElementById("dob").value;
+
+      if (roll && sem && dob) {
+        document.getElementById("result-image").style.display = "block";
+      } else {
+        alert("Please fill all the details.");
+      }
+    }
+  </script>
+</body>
+</html>
